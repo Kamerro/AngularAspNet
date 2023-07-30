@@ -26,12 +26,12 @@ namespace AngularAspNet.Controllers
             //
             //Creating collection provided with NewtonsoftJson
             var data = JObject.Parse(responseBody);
-            var eur = data["rates"]["Eur"];
+            string eur = "" + data["rates"]["EUR"];
             //st.WriteLine("1 USD is equal to " + data["rates"]["EUR"] + " Euros " + DateTime.Now.ToString());
             //st.WriteLine("1 USD is equal to " + data["rates"]["PLN"] + " PLN " + DateTime.Now.ToString());
             //st.WriteLine("1 USD is equal to " + data["rates"]["CHF"] + " CHF " + DateTime.Now.ToString());
 
-            return View(eur);
+            return View(data);
         }
   }
 }
