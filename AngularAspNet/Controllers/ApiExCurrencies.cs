@@ -5,7 +5,7 @@ using System.ComponentModel;
 namespace AngularAspNet.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ApiExCurrenciesController : Controller
     {
         //Creating static HttpClient 
@@ -17,21 +17,15 @@ namespace AngularAspNet.Controllers
 
         }
         [HttpGet]
-        [Route("Get")]
-        public async Task<IActionResult> Index()
-         {
+        public async Task<IActionResult> GetAll()
+        {
 
             HttpResponseMessage response = await client.GetAsync("https://api.exchangerate-api.com/v4/latest/USD");
             string responseBody = await response.Content.ReadAsStringAsync();
-            //
-            //Creating collection provided with NewtonsoftJson
             var data = JObject.Parse(responseBody);
             var eur = data["rates"]["Eur"];
-            //st.WriteLine("1 USD is equal to " + data["rates"]["EUR"] + " Euros " + DateTime.Now.ToString());
-            //st.WriteLine("1 USD is equal to " + data["rates"]["PLN"] + " PLN " + DateTime.Now.ToString());
-            //st.WriteLine("1 USD is equal to " + data["rates"]["CHF"] + " CHF " + DateTime.Now.ToString());
 
-            return View(eur);
+            return "dupa";
         }
   }
 }
